@@ -1,0 +1,45 @@
+gcloud config set project flaskdemo1-443410
+
+gcloud container clusters create clust-flask2 --zone asia-southeast1-a --num-nodes 3 --disk-size 20GB
+
+gcloud container clusters get-credentials clust-flask2 --zone asia-southeast1-a --project flaskdemo1-443410
+
+gcloud container clusters get-credentials my-cluster --zone us-central1-a --project YOUR_PROJECT_ID
+
+
+git clone https://github.com/mchandak/Clouddemo1.git
+git pull origin master
+
+docker build -t gcr.io/flaskdemo1-443410/flask-app1:v2 .
+
+docker push gcr.io/flaskdemo1-443410/flask-app1:v2
+
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl get pods
+kubectl get service flask-app-service
+
+http://34.143.157.118:80
+
+
+flaskdemo1-443410
+
+
+gcloud config set project flaskdemo1-443410
+
+gcloud builds submit --config cloudbuild.yaml .
+
+
+gcloud container images list --repository=gcr.io/flaskdemo1-443410
+
+
+http://127.0.0.1:5000/add_user/abc/abc@example.com
+
+kubectl create deployment hello --image=gcr.io/flaskdemo1-443410/flask-app:v1
+kubectl expose deployment hello --type=LoadBalancer --port 8080
+
+http://34.87.104.215:8080
+http://34.143.157.118:80
+
+kubectl logs hello-86c7f47459-txj7b
