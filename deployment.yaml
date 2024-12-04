@@ -1,24 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-app-deploy
+  name: flask-deployment
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: flask-app1
+      app: flask
   template:
     metadata:
       labels:
-        app: flask-app1
+        app: flask
     spec:
       containers:
-      - name: flask-app1
-        image: gcr.io/flaskdemo1-443410/flask-app1:v3
+      - name: flask-container
+        image: 9135-2494-6304.dkr.ecr.us-west-2.amazonaws.com/flask-hello-world:latest
         ports:
-        - containerPort: 5000
-   
-   
-   
-   
-   
+        - containerPort: 80
